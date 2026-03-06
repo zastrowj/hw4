@@ -1,10 +1,15 @@
 <h1>New Place</h1>
 
-<form action="/places" method="post">
-  <p>
-    <label for="name_input">Name</label>
-    <input type="text" name="name" id="name_input">
-  </p>
+<div class="row">
+  <div class="col-md-6">
+    <form action="/places" method="post">
+      <div class="mb-3">
+        <label for="name_input" class="form-label">Name</label>
+        <input type="text" name="name" id="name_input" class="form-control">
+      </div>
 
-  <button>Save</button>
-</form>
+      <button class="btn btn-success">Save Place</button>
+      <a href="/places" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+</div>
