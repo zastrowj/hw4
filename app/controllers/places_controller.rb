@@ -6,7 +6,12 @@ class PlacesController < ApplicationController
 
   def show
     @place = Place.find_by({ "id" => params["id"] })
-    @entries = Entry.where({ "place_id" => @place["id"] })
+    
+    # Only find entries that belong to this place AND the logged-in user
+    @entries = Entry.where({ 
+      "place_id" => @place["id"], 
+      "user_id" => session["user_id"] 
+    })
   end
 
   def new
