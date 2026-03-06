@@ -4,6 +4,10 @@
   <% for entry in @entries %>
     <div class="col-md-4 mb-3">
       <div class="card">
+        <% if entry.uploaded_image.attached? %>
+          <%= image_tag entry.uploaded_image, class: "card-img-top" %>
+        <% end %>
+
         <div class="card-body">
           <h5 class="card-title"><%= entry["title"] %></h5>
           <h6 class="text-muted"><%= entry["occurred_on"] %></h6>
@@ -14,14 +18,16 @@
   <% end %>
 </div>
 
-<% if @current_user != nil %>
-  <p>
-    <a href="/entries/new?place_id=<%= @place["id"] %>" class="btn btn-success">
-      New Entry
-    </a>
-  </p>
-<% end %>
+<div class="mt-4">
+  <% if @current_user != nil %>
+    <p>
+      <a href="/entries/new?place_id=<%= @place["id"] %>" class="btn btn-success">
+        New Entry
+      </a>
+    </p>
+  <% end %>
 
-<p>
-  <a href="/places" class="btn btn-secondary">Back to All Places</a>
-</p>
+  <p>
+    <a href="/places" class="btn btn-secondary">Back to All Places</a>
+  </p>
+</div>
