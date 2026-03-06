@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "/login", :controller => "sessions", :action => "new"
+  get "/logout", :controller => "sessions", :action => "destroy"
+  
   get("/", { :controller => "places", :action => "index" })
   resources "entries"
   resources "places"
