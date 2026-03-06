@@ -14,9 +14,13 @@
   <% end %>
 </div>
 
-<p>
-  <a href="/entries/new?place_id=<%= @place["id"] %>" class="btn btn-success">New Entry</a>
-</p>
+<% if @current_user != nil %>
+  <p>
+    <a href="/entries/new?place_id=<%= @place["id"] %>" class="btn btn-success">
+      New Entry
+    </a>
+  </p>
+<% end %>
 
 <p>
   <a href="/places" class="btn btn-secondary">Back to All Places</a>
