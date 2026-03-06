@@ -7,7 +7,15 @@ class UsersController < ApplicationController
     @user["username"] = params["username"]
     @user["email"] = params["email"]
     @user["password_digest"] = BCrypt::Password.create(params["password"])
-    @user.save
-    redirect_to "/"
+    
+    # Attempt to save the user; this will check the uniqueness validations in your User model
+    if @user.save
+      flash["notice"] = "Thanks for signing up! Please log in."
+      redirect_to "/login"
+    else
+      # If validations fail (e.g., email already taken), redirect back with an alert
+      flash["notice"] = "Username or Email already taken. Please try again."
+      redirect_to "/users/new"
+    end
   end
 end
