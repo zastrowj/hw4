@@ -6,6 +6,8 @@
       <div class="card">
         <% if entry.uploaded_image.attached? %>
           <%= image_tag entry.uploaded_image, class: "card-img-top" %>
+        <% else %>
+          <img src="<%= entry["image"] %>" class="card-img-top">
         <% end %>
 
         <div class="card-body">
