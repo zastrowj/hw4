@@ -17,10 +17,13 @@ class EntriesController < ApplicationController
     # Assign the logged-in user's ID to this entry
     @entry["user_id"] = session["user_id"] 
 
-    @entry.uploaded_image.attach(params["uploaded_image"])
-
-    @entry.save
-    redirect_to "/places/#{@entry["place_id"]}"
+    if @entry.save
+      if params["uploaded_image"].present?
+        @entry.uploaded_image.attach(params["uploaded_image"])
+      end  
+      redirect_to "/places/#{@entry["place_id"]}"
+    else
+      redirect_to "/places"
   end
 
 end
