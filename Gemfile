@@ -12,11 +12,11 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "cgi"
 
 group :development, :test do
+  gem "sqlite3", "~> 2.1"
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
 
-group :development do
-  gem "tabulo"
-  gem "web-console"
+group :production do
+  gem "pg"
 end
 
