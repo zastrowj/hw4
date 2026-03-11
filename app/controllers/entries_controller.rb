@@ -23,7 +23,7 @@ class EntriesController < ApplicationController
       end  
       redirect_to "/places/#{@entry["place_id"]}"
     else
-      redirect_to "/places"
+      redirect_to "/places/#{@entry["place_id"]}"
   end
 
 end
